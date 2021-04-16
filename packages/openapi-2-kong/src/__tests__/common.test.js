@@ -187,7 +187,9 @@ describe('common', () => {
 
   describe('pathVariablesToRegex()', () => {
     it('converts variables to regex path', () => {
-      expect(pathVariablesToRegex('/foo/{bar}/{baz}')).toBe('/foo/(?<bar>\\S+)/(?<baz>\\S+)$');
+      expect(pathVariablesToRegex('/foo/{bar}/{baz}')).toBe(
+        '/foo/(?<bar>[^\\/\\r\\n\\t\\f\\v ]+)/(?<baz>[^\\/\\r\\n\\t\\f\\v ]+)$',
+      );
     });
 
     it('does not convert to regex if no variables present', () => {
